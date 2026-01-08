@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="URFlix - Professional AI-Powered Report Cloning and Transformation Tool">
+    <meta name="theme-color" content="#6366f1">
+    <title>URFlix - Professional Report Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- PDF.js for PDF parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Mammoth.js for Word document parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- html2canvas for converting HTML to canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- docx library for creating editable Word documents -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">URFlix</h1>
+            <p class="tagline">Professional AI-Powered Report Cloning & Transformation</p>
+        </header>
+
+        <main>
+            <div class="workspace">
+                <!-- Upload Section -->
+                <section class="upload-section">
+                    <h2>Upload Demo Report</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Drag & drop your report file here</p>
+                            <p class="upload-hint">Supports: PDF, Word (.doc, .docx), Text (.txt)</p>
+                            <input type="file" id="fileInput" accept=".txt,.doc,.docx,.pdf" style="display: none;">
+                            <div class="file-info" id="fileInfo" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <div class="text-input-section">
+                        <label for="reportText">Or paste report text directly:</label>
+                        <textarea id="reportText" placeholder="Paste your demo report content here..."></textarea>
+                        <button class="btn btn-primary" id="loadReportBtn">Load Report</button>
+                    </div>
+                </section>
+
+                <!-- Prompt Section -->
+                <section class="prompt-section">
+                    <h2>Modify Report</h2>
+                    <div class="prompt-input">
+                        <label for="promptInput">Enter your modification prompt:</label>
+                        <textarea id="promptInput" placeholder="e.g., Change all dates to 2024, Replace 'Company A' with 'Company B', Update revenue figures by 20%..."></textarea>
+                        <div class="prompt-actions">
+                            <button class="btn btn-primary" id="applyPromptBtn">
+                                <span class="btn-text">Apply Changes with AI</span>
+                                <span class="btn-loader" style="display: none;"></span>
+                            </button>
+                            <button class="btn btn-secondary" id="resetBtn">Reset to Original</button>
+                        </div>
+                        <div class="ai-status" id="aiStatus" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- Report Display Section -->
+                <section class="report-section">
+                    <div class="report-header">
+                        <h2>Generated Report</h2>
+                        <div class="report-actions">
+                            <button class="btn btn-icon" id="downloadPdfBtn" title="Download in Original Format">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </button>
+                            <button class="btn btn-icon" id="copyBtn" title="Copy to Clipboard">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="report-display" id="reportDisplay">
+                        <div class="empty-state">
+                            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <p>No report loaded. Upload or paste a demo report to get started.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 URFlix. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
