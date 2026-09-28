@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#faf9f6" />
+  <title>Sushmitha K &amp; Niranjan S | Wedding Invitation</title>
+  <meta name="description" content="Wedding invitation of Sushmitha K &amp; Niranjan S — 14th &amp; 15th October 2026." />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root {
+      --ink: #222;
+      --muted: #666;
+      --paper: #faf9f6;
+      --line: #d7d3ca;
+      --white: #fff;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      background: rgba(250,249,246,.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(34,34,34,.12);
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-inner { position: relative; justify-content: center; flex-direction: column; gap: 4px; }
+    .menu-toggle {
+      position: absolute;
+      left: 24px;
+      display: grid;
+      align-content: center;
+      gap: 5px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 21px; height: 2px; background: currentColor; }
+    .menu-toggle:hover { opacity: .6; }
+    .event-menu {
+      position: absolute;
+      top: 100%;
+      left: 24px;
+      width: min(260px, calc(100vw - 32px));
+      padding: 7px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(34,34,34,.14);
+    }
+    .event-menu[hidden] { display: none; }
+    .event-menu a {
+      display: block;
+      padding: 12px 14px;
+      font-family: Montserrat, sans-serif;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .event-menu a:hover, .event-menu a:focus-visible { background: #f0ede6; }
+    .nav .top-title { margin-bottom: 0; }
+
+    .links {
+      display: flex;
+      gap: 24px;
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .links a:hover { opacity: .55; }
+
+    .hero {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 114px 22px 14px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(0,0,0,.035), transparent 35%),
+        var(--paper);
+    }
+
+    section::before,
+    section::after {
+      content: "\2726";
+      position: absolute;
+      z-index: 0;
+      color: #e3a72f;
+      font-size: 24px;
+      opacity: .25;
+      animation: sparkle 2.8s ease-in-out infinite;
+    }
+    section::before { left: 4%; top: 22%; }
+    section::after { right: 4%; top: 72%; animation-delay: 1.4s; }
+    .hero::before { left: 12%; top: 38%; }
+    .hero::after { right: 12%; top: 64%; animation-delay: 1.4s; }
+    @keyframes sparkle {
+      0%, 100% { opacity: .2; transform: scale(.65) rotate(0deg); }
+      50% { opacity: .9; transform: scale(1) rotate(45deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      section::before, section::after { animation: none; opacity: .55; }
+    }
+
+    .ornament {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      opacity: .6;
+    }
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+    .ornament::after { inset: 38px; }
+    .ornament.left { left: -75px; top: 32%; }
+    .ornament.right { right: -75px; top: 32%; }
+
+    .hero-content { max-width: 850px; position: relative; z-index: 2; }
+    .hero-icons { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .hero-icon { position: absolute; color: #d7a33b; font-size: 34px; line-height: 1; opacity: .15; }
+    .hero-icon.flower { color: #ca8f72; }
+    .hero-icon.icon-one { left: 7%; top: 31%; transform: rotate(-14deg); }
+    .hero-icon.icon-two { right: 8%; top: 42%; font-size: 30px; transform: rotate(12deg); }
+    .hero-icon.icon-three { left: 12%; top: 76%; font-size: 27px; }
+    .hero-icon.icon-four { right: 13%; top: 79%; font-size: 38px; transform: rotate(16deg); }
+    .hero-image-wrap { position: relative; isolation: isolate; width: min(70vw, 360px); margin: 0 auto; --fall-distance: 245px; }
+    .hero-feature-image { display: block; width: 100%; max-height: 245px; object-fit: contain; }
+    .petal-layer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .falling-petal {
+      position: absolute;
+      top: -14px;
+      left: var(--x);
+      width: 9px;
+      height: 13px;
+      border-radius: 80% 0 80% 0;
+      background: linear-gradient(145deg, #f3c1a7, #d77950);
+      opacity: 0;
+      animation: petal-fall var(--duration) linear var(--delay) infinite;
+    }
+    .falling-petal:nth-child(even) { background: linear-gradient(145deg, #ffe29a, #e5a72e); }
+    @keyframes petal-fall {
+      0% { opacity: 0; transform: translate3d(0, -8px, 0) rotate(0deg); }
+      10%, 82% { opacity: .9; }
+      100% { opacity: 0; transform: translate3d(var(--drift), var(--fall-distance), 0) rotate(540deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { .falling-petal { animation: none; } }
+
+    /* NEW: "Wedding Invitation" heading above the start of the hero */
+    .top-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 26px;
+      font-family: Montserrat, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .top-title::before,
+    .top-title::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--ink);
+      opacity: .5;
+    }
+
+    .eyebrow {
+      font-family: Montserrat, sans-serif;
+      font-size: 11px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .script {
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: clamp(62px, 11vw, 128px);
+      line-height: .95;
+    }
+
+    .amp {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 500;
+      margin: 8px 0;
+    }
+
+    .handshake { font-family: "Segoe UI Emoji", sans-serif; font-size: clamp(30px, 4vw, 38px); line-height: 1; }
+
+    /* Names: handwriting-style reveal, then ampersand, then second name */
+    .write {
+      display: inline-block;
+      clip-path: inset(-25% 100% -25% -10%);
+      animation: write 1.2s cubic-bezier(.45,.05,.35,1) forwards;
+    }
+    .w1 { animation-delay: .3s; }
+    .w2 { animation-delay: 1.9s; }
+    .pop { opacity: 0; transform: scale(.6); animation: pop .5s ease 1.6s forwards; }
+    .eyebrow { animation: fade 1s ease both; }
+    @keyframes write { to { clip-path: inset(-25% -10% -25% -10%); } }
+    @keyframes pop { to { opacity: 1; transform: scale(1); } }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .write, .pop, .eyebrow { animation: none; clip-path: none; opacity: 1; transform: none; }
+    }
+
+    /* Round portraits: Sushmitha K left, Niranjan S right */
+    .couple {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .portrait {
+      width: clamp(100px, 31vw, 140px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      padding: 5px;
+      background: #fff;
+      border: 1px solid var(--ink);
+      box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px #e3a72f;
+      opacity: 0;
+      transform: scale(.7);
+      animation: pop .6s ease .1s forwards;
+    }
+    .portrait img, .portrait .ph {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .portrait .ph {
+      display: grid;
+      place-items: center;
+      background: var(--paper);
+      font-family: "Great Vibes", cursive;
+      font-size: 56px;
+      color: var(--ink);
+    }
+    .couple-mark { font-size: 20px; color: #e3a72f; }
+    @media (prefers-reduced-motion: reduce) { .portrait { animation: none; opacity: 1; transform: none; } }
+
+    /* Portraits beside the names */
+    .name-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .name-row .script { font-size: clamp(44px, 12.5vw, 100px); }
+    .name-row .portrait {
+      flex: 0 0 auto;
+      width: clamp(56px, 17vw, 88px);
+      padding: 3px;
+      box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px #e3a72f;
+    }
+    .name-row.left .portrait { animation-delay: .2s; }
+    .name-row.right .portrait { animation-delay: 1.8s; }
+    .name-row .portrait .ph { font-size: 30px; }
+
+    section { position: relative; isolation: isolate; padding: 100px 22px; scroll-margin-top: 56px; }
+
+    .section-inner { position: relative; z-index: 1; max-width: var(--max); margin: auto; }
+
+    .section-title { text-align: center; margin-bottom: 48px; }
+
+    .section-title small {
+      display: block;
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .events {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .event { padding: 48px 35px; text-align: center; }
+
+    .event + .event { border-left: 1px solid var(--line); }
+
+    .event .number {
+      font-family: "Great Vibes", cursive;
+      font-size: 54px;
+      margin-bottom: 10px;
+    }
+
+    .event h3 { font-size: 30px; font-weight: 600; margin-bottom: 12px; }
+
+    .event p { font-size: 19px; color: #444; }
+
+    .event .time {
+      font-family: Montserrat, sans-serif;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: 18px;
+    }
+
+    .story { padding-top: 34px; text-align: center; }
+
+    .story-card {
+      position: relative;
+      max-width: 760px;
+      margin: auto;
+      padding: 68px 48px 48px;
+      border: 1px solid #c6aa70;
+      background: #fffdf8;
+      box-shadow: 0 8px 24px rgba(34,34,34,.07);
+    }
+
+    .letter-roll {
+      position: absolute;
+      top: 14px;
+      bottom: 14px;
+      left: -8px;
+      z-index: 2;
+      width: 16px;
+      border: 1px solid #b99b67;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #b49a6e 0%, #f8efd9 38%, #dfcda8 72%, #a88a58 100%);
+      box-shadow: 2px 1px 3px rgba(61, 45, 20, .18);
+      pointer-events: none;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid #e8ddc6;
+      pointer-events: none;
+    }
+
+    .story-card::after {
+      content: "\2726";
+      position: absolute;
+      top: 21px;
+      left: 50%;
+      padding: 0 12px;
+      background: #fffdf8;
+      color: #b98d3a;
+      font-size: 18px;
+      transform: translateX(-50%);
+    }
+
+    .story-card p { max-width: 48ch; margin: auto; color: #444; font-size: 20px; line-height: 1.6; }
+
+    .celebration-heading { margin: 34px auto 18px; }
+    .celebration-heading small {
+      display: block;
+      margin-bottom: 5px;
+      color: #80602f;
+      font: 10px Montserrat, sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .celebration-heading h3 { font-size: 34px; font-weight: 500; line-height: 1.1; }
+
+    .celebration-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .celebration-card {
+      min-height: 215px;
+      padding: 24px 18px;
+      border: 1px solid var(--line);
+      border-top: 3px solid #c6aa70;
+      border-radius: 2px;
+      background: #fffdf8;
+      text-align: center;
+      color: #80602f;
+      line-height: 1.5;
+      box-shadow: 0 4px 12px rgba(34,34,34,.06);
+    }
+
+    .celebration-number { font-family: "Cormorant Garamond", Georgia, serif; font-size: 56px; font-weight: 600; line-height: 1; }
+    .celebration-card h4 { margin: 9px 0 5px; color: var(--ink); font-size: 27px; font-weight: 500; }
+    .celebration-date { margin: 0; color: #555; font-size: 17px; }
+    .celebration-time { margin: 13px 0 0; color: #80602f; font: 10px Montserrat, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+
+    .names {
+      font-family: "Great Vibes", cursive;
+      color: #80602f;
+      font-size: 54px;
+      margin: 22px 0;
+    }
+
+    .names .weds {
+      display: block;
+      margin: 4px 0;
+      color: var(--muted);
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      letter-spacing: .22em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .location { background: #242424; color: #fff; }
+
+    .location .section-title small { color: #bbb; }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: stretch;
+    }
+
+    .location-card { border: 1px solid #555; padding: 45px; }
+
+    .location-card h3 { font-size: 34px; margin-bottom: 15px; }
+
+    .location-card p { color: #ddd; font-size: 20px; margin-bottom: 28px; }
+
+    .map-button {
+      display: inline-block;
+      border: 1px solid #fff;
+      padding: 12px 20px;
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .map-button:hover { background: #fff; color: #222; }
+
+    .count-box { border: 1px solid var(--line); background: #fff; padding: 28px 12px; }
+
+    .count-box strong { display: block; font-size: 42px; font-weight: 500; }
+
+    .count-box span {
+      font-family: Montserrat, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .capture { background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+    .capture-intro { max-width:680px; margin:-15px auto 35px; color:#555; font-size:22px; }
+    .capture-date { font-family:Montserrat,sans-serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:14px; }
+    .capture-timer { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:760px; margin:0 auto 25px; }
+    .capture-status { font-family:Montserrat,sans-serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); line-height:1.7; }
+    .capture-button {
+      display:inline-block; margin-top:25px; padding:13px 25px; border:1px solid var(--ink); background:transparent; color:var(--ink);
+      font-family:Montserrat,sans-serif; font-size:10px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer;
+    }
+    .capture-button:hover:not(:disabled) { background:var(--ink); color:#fff; }
+    .capture-button:disabled { opacity:.45; cursor:not-allowed; }
+    .capture-thumbs { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; max-width:760px; margin:18px auto 0; }
+    .capture-thumbs img { width:100%; aspect-ratio:1; object-fit:cover; border:1px solid var(--line); }
+
+    .capture-form { display:none; max-width:420px; margin:20px auto 0; }
+    .capture-form.show { display:block; }
+    .capture-form input { width:100%; padding:15px 16px; border:1px solid var(--line); border-radius:0; background:#fff; color:var(--ink); font-family:Montserrat,sans-serif; font-size:16px; }
+    .capture-form .capture-button { display:block; width:100%; margin-top:12px; }
+    .capture-msg { margin-top:14px; font-family:Montserrat,sans-serif; font-size:11px; letter-spacing:.06em; color:var(--muted); line-height:1.7; min-height:1em; }
+
+    .invitation { background: #fff; border-top: 1px solid var(--line); }
+
+    .invitation-frame {
+      max-width: 720px;
+      margin: auto;
+      border: 1px solid var(--line);
+      padding: 15px;
+      background: var(--paper);
+    }
+
+    .invitation-frame img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+
+    footer { padding: 70px 20px; text-align: center; border-top: 1px solid var(--line); }
+
+    footer .script { font-size: 60px; }
+
+    footer p {
+      margin-top: 10px;
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+      display: none;
+      place-items: center;
+      padding: 25px;
+      z-index: 50;
+    }
+
+    .modal.open { display: grid; }
+
+    .modal img { max-width: 95vw; max-height: 92vh; object-fit: contain; }
+
+    .close {
+      position: fixed;
+      top: calc(14px + env(safe-area-inset-top, 0px));
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      color: #fff;
+      background: transparent;
+      border: 0;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 720px) {
+      .nav-inner { padding: 10px 16px; }
+      .menu-toggle { left: 16px; }
+      .event-menu { left: 16px; }
+
+      .hero { padding: 94px 18px 8px; }
+      .hero-icon { font-size: 25px; opacity: .12; }
+      .hero-icon.icon-two { font-size: 23px; }
+      .hero-icon.icon-three { font-size: 21px; }
+      .hero-icon.icon-four { font-size: 29px; }
+      .hero-image-wrap { width: min(76vw, 320px); --fall-distance: 200px; }
+      .hero-feature-image { max-height: 200px; }
+      .top-title { font-size: 11px; letter-spacing: .24em; gap: 10px; margin-bottom: 22px; }
+      .top-title::before, .top-title::after { width: 22px; }
+      .eyebrow { font-size: 10px; letter-spacing: .22em; margin-bottom: 18px; }
+      .amp { font-size: 34px; }
+
+      section { padding: 64px 18px; }
+      .story { padding-top: 18px; }
+      .section-title { margin-bottom: 32px; }
+      .section-title h2 { font-size: 40px; }
+
+      .event-grid, .location-grid { grid-template-columns: 1fr; }
+      .event { padding: 36px 22px; }
+      .event + .event { border-left: 0; border-top: 1px solid var(--line); }
+
+      .story-card { padding: 60px 24px 34px; }
+      .story-card p { font-size: 18px; }
+      .celebration-heading { margin: 26px auto 14px; }
+      .celebration-heading h3 { font-size: 30px; }
+      .celebration-grid { grid-template-columns: 1fr; gap: 10px; }
+      .celebration-card { min-height: 190px; padding: 20px 16px; }
+      .celebration-card h4 { font-size: 25px; }
+      .names { font-size: 44px; }
+
+      .location-grid { gap: 22px; }
+      .location-card { padding: 28px 22px; }
+      .location-card h3 { font-size: 30px; }
+      .map-button { display: block; text-align: center; padding: 15px 20px; }
+
+      /* Wedding Photography — mobile */
+      .capture-intro { font-size: 20px; margin: -10px auto 24px; padding: 0 4px; }
+      .capture-date { font-size: 9px; letter-spacing: .12em; }
+      .capture-timer { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
+      .capture-timer .count-box { padding: 16px 2px 12px; }
+      .capture-timer .count-box strong { font-size: 30px; line-height: 1.05; }
+      .capture-timer .count-box span { font-size: 8px; letter-spacing: .1em; }
+      .capture-status { font-size: 9px; letter-spacing: .1em; }
+      .capture-button { display: block; width: 100%; margin-top: 22px; padding: 17px 20px; font-size: 11px; }
+
+      .invitation-frame { padding: 8px; }
+      footer { padding: 54px 18px calc(40px + env(safe-area-inset-bottom, 0px)); }
+      footer .script { font-size: 48px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  
+    /* Capture Our Moments: compact, well-aligned */
+    .capture { padding: 44px 16px 48px; }
+    .capture .section-title { margin-bottom: 16px; }
+    .capture .section-title small { font-size: 9px; letter-spacing: .2em; margin-bottom: 6px; }
+    .capture .section-title h2 { font-size: clamp(28px, 8.5vw, 38px); }
+    .capture-intro {
+      max-width: 30ch;
+      margin: 0 auto 18px;
+      font-size: clamp(16px, 4.6vw, 19px);
+      line-height: 1.35;
+    }
+    .capture-date { font-size: 9px; letter-spacing: .12em; margin-top: 10px; }
+    .capture-timer { max-width: 320px; gap: 6px; margin: 0 auto 12px; }
+    .capture-timer .count-box { padding: 10px 2px 8px; }
+    .capture-timer .count-box strong { font-size: 24px; line-height: 1.1; }
+    .capture-timer .count-box span { display: block; margin-top: 2px; font-size: 7.5px; letter-spacing: .1em; }
+    .capture-status { max-width: 320px; margin: 0 auto; font-size: 8.5px; letter-spacing: .08em; line-height: 1.6; }
+    .capture-button {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 16px auto 0;
+      padding: 13px 16px;
+      font-size: 10px;
+    }
+    .capture-thumbs { max-width: 320px; }
+
+    .capture {
+      padding: 48px 20px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .capture .section-title { margin-bottom: 18px; }
+    .capture .section-title small,
+    .capture .section-title h2 { font-family: Montserrat, sans-serif; }
+    .capture .section-title small { font-size: 15px; letter-spacing: .08em; text-transform: none; }
+    .capture .section-title h2 { font-size: clamp(30px, 5vw, 42px); }
+    .capture-intro { max-width: 54ch; margin: 0 auto 18px; font-size: 18px; line-height: 1.5; }
+    .capture-date { margin-top: 10px; font-size: 10px; letter-spacing: .1em; }
+    .capture-timer {
+      max-width: 520px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 auto 12px;
+    }
+    .capture-timer .count-box {
+      min-width: 0;
+      padding: 14px 8px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: #faf9f6;
+      animation: timer-arrive .45s ease both;
+    }
+    .capture-timer .count-box:nth-child(2) { animation-delay: .08s; }
+    .capture-timer .count-box:nth-child(3) { animation-delay: .16s; }
+    .capture-timer .count-box:nth-child(4) { animation-delay: .24s; }
+    @keyframes timer-arrive {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .capture-timer .count-box { animation: none; }
+    }
+    .capture-timer .count-box strong { font-family: "Times New Roman", Times, serif; font-size: 32px; font-weight: 500; line-height: 1; }
+    .capture-timer .count-box span { display: block; margin-top: 5px; font-size: 9px; letter-spacing: .1em; }
+    .capture-status { max-width: 520px; font-size: 9px; letter-spacing: .08em; }
+
+    .location {
+      padding: 56px 20px;
+      background: #171715;
+      color: #fff;
+      border-top: 1px solid #171715;
+    }
+    .location .section-title small { color: #c9b98f; }
+    .location .section-title { margin-bottom: 20px; }
+    .location .section-title h2 { font-size: clamp(34px, 5vw, 46px); }
+    .location-grid { display: block; max-width: 680px; margin: auto; }
+    .location-card { padding: 24px 16px; border: 0; border-top: 1px solid #55534c; text-align: center; }
+    .location-card h3 { margin-bottom: 8px; font-size: 30px; font-weight: 500; }
+    .location-card p { margin-bottom: 20px; color: #e1ded6; font-size: 17px; line-height: 1.55; }
+    .map-button { padding: 12px 18px; border: 1px solid #c9b98f; color: #f5e7c3; }
+    .map-button:hover { background: #f5e7c3; color: #171715; }
+
+    @media (max-width: 720px) {
+      .capture { padding: 38px 18px; }
+      .capture-intro { max-width: 36ch; font-size: 17px; }
+      .capture-timer { max-width: 100%; }
+      .capture-timer { gap: 6px; }
+      .capture-timer .count-box { padding: 12px 3px; }
+      .capture-timer .count-box strong { font-size: 30px; }
+      .capture-timer .count-box span { font-size: 8px; }
+      .location { padding: 44px 18px; }
+      .location-card { padding: 20px 8px; }
+      .location-card h3 { font-size: 27px; }
+      .location-card p { font-size: 16px; }
+    }
+</style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <button class="menu-toggle" id="eventMenuToggle" type="button" aria-label="Open events menu" aria-expanded="false" aria-controls="eventMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="top-title">Wedding Invitation</div>
+    </div>
+    <div class="event-menu" id="eventMenu" hidden>
+      <a href="save-the-date.html">Save the Date</a>
+      <a href="engagement.html">Engagement</a>
+      <a href="haldi.html">Haldi</a>
+      <a href="reception.html">Reception</a>
+      <a href="muhurtham.html">Muhurtham</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="ornament left"></div>
+      <div class="ornament right"></div>
+      <div class="hero-icons" aria-hidden="true">
+        <span class="hero-icon flower icon-one">&#10047;</span>
+        <span class="hero-icon icon-two">&#9825;</span>
+        <span class="hero-icon icon-three">&#10022;</span>
+        <span class="hero-icon flower icon-four">&#10048;</span>
+      </div>
+
+      <div class="hero-image-wrap">
+        <img class="hero-feature-image" src="mariage-removebg-preview.png" alt="Wedding celebration illustration">
+        <div class="petal-layer" aria-hidden="true">
+          <span class="falling-petal" style="--x: 8%; --delay: -2s; --duration: 6.8s; --drift: 30px"></span>
+          <span class="falling-petal" style="--x: 19%; --delay: -5.1s; --duration: 7.6s; --drift: -22px"></span>
+          <span class="falling-petal" style="--x: 33%; --delay: -1.4s; --duration: 6.2s; --drift: 26px"></span>
+          <span class="falling-petal" style="--x: 47%; --delay: -4.3s; --duration: 7.2s; --drift: -30px"></span>
+          <span class="falling-petal" style="--x: 61%; --delay: -2.8s; --duration: 6.5s; --drift: 22px"></span>
+          <span class="falling-petal" style="--x: 74%; --delay: -5.7s; --duration: 7.8s; --drift: -25px"></span>
+          <span class="falling-petal" style="--x: 88%; --delay: -3.6s; --duration: 6.9s; --drift: 28px"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <div class="section-inner">
+        <div class="section-title">
+          <small>With love</small>
+          <h2>A New Beginning</h2>
+        </div>
+
+        <div class="story-card">
+          <span class="letter-roll" aria-hidden="true"></span>
+          <p>We cordially invite you and your family to join us in the celebration of our wedding.</p>
+          <div class="names">Sushmitha K<span class="weds">weds</span>Niranjan S</div>
+          <p>“You are not just invited, but most expected.”</p>
+        </div>
+        <div class="celebration-heading">
+          <small>Save the Dates</small>
+          <h3>Wedding Celebrations</h3>
+        </div>
+        <div class="celebration-grid" role="list" aria-label="Wedding celebration schedule">
+          <article class="celebration-card" role="listitem">
+            <div class="celebration-number">14</div>
+            <h4>Reception</h4>
+            <p class="celebration-date">Wednesday, 14 October 2026</p>
+            <p class="celebration-time">7:00 PM onwards</p>
+          </article>
+          <article class="celebration-card" role="listitem">
+            <div class="celebration-number">15</div>
+            <h4>Muhurtham</h4>
+            <p class="celebration-date">Thursday, 15 October 2026</p>
+            <p class="celebration-time">7:45 AM – 8:15 AM</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capture" id="capture">
+      <div class="section-inner">
+        <div class="section-title">
+          <small>Wedding Photography</small>
+          <h2>Capture Our Moments</h2>
+        </div>
+        <div class="capture-intro">
+          Capture the 4 best candid moments of the Bride &amp; Groom and win a special gift from us.
+          <div class="capture-date">14 October 2026 · 7:00 PM onwards</div>
+        </div>
+        <div class="capture-timer" id="captureTimer">
+          <div class="count-box"><strong id="captureDays">00</strong><span>Days</span></div>
+          <div class="count-box"><strong id="captureHours">00</strong><span>Hours</span></div>
+          <div class="count-box"><strong id="captureMinutes">00</strong><span>Minutes</span></div>
+          <div class="count-box"><strong id="captureSeconds">00</strong><span>Seconds</span></div>
+        </div>
+        <div class="capture-status" id="captureStatus">Submissions open from 14 October 2026 · 7:00 PM</div>
+        <input type="file" id="captureFile" accept="image/*" multiple hidden />
+        <button class="capture-button" id="captureButton" type="button" disabled>Upload Photos</button>
+        <div class="capture-thumbs" id="captureThumbs"></div>
+        <div class="capture-form" id="captureForm">
+          <input type="text" id="guestName" placeholder="Your name" maxlength="40" autocomplete="name" />
+          <button class="capture-button" id="submitButton" type="button">Submit Photos</button>
+        </div>
+        <div class="capture-msg" id="captureMsg" role="status"></div>
+      </div>
+    </section>
+
+    <section class="location" id="venue">
+      <div class="section-inner">
+        <div class="section-title">
+          <small>Join us here</small>
+          <h2>Venue</h2>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>V.P. Palace</h3>
+            <p>Near Madikere Cross,<br>Chinthamani – Srinivasapura Road.</p>
+            <a class="map-button"
+               href="https://www.google.com/maps/search/?api=1&query=V.P.%20Palace%20Near%20Madikere%20Cross%20Chinthamani%20Srinivasapura%20Road"
+               target="_blank" rel="noopener">Get Directions</a>
+          </div>
+
+                 </div>
+      </div>
+    </section>
+
+   
+  </main>
+
+
+
+  <div class="modal" id="modal">
+    <button class="close" id="close" aria-label="Close">&times;</button>
+    <img src="invitation-reference.jpg" alt="Wedding invitation enlarged">
+  </div>
+
+  <script>
+    const eventMenuToggle = document.getElementById("eventMenuToggle");
+    const eventMenu = document.getElementById("eventMenu");
+    function setEventMenuOpen(open){
+      eventMenu.hidden = !open;
+      eventMenuToggle.setAttribute("aria-expanded", String(open));
+      eventMenuToggle.setAttribute("aria-label", open ? "Close events menu" : "Open events menu");
+    }
+    eventMenuToggle.addEventListener("click", () => setEventMenuOpen(eventMenu.hidden));
+    eventMenu.addEventListener("click", (event) => {
+      if(event.target.closest("a")) setEventMenuOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if(event.key === "Escape" && !eventMenu.hidden){
+        setEventMenuOpen(false);
+        eventMenuToggle.focus();
+      }
+    });
+
+  </script>
+  <script>
+    // Capture Our Moments: starts 14 Oct 2026 at 7:00 PM IST.
+    // Submission window shown through the morning of 15 Oct; change END if needed.
+    const captureStart = new Date("2026-10-14T19:00:00+05:30").getTime();
+    const captureEnd = new Date("2026-10-15T12:00:00+05:30").getTime();
+    const btn = document.getElementById("captureButton");
+    function updateCapture(){
+      const now=Date.now(), status=document.getElementById("captureStatus"), timer=document.getElementById("captureTimer");
+      if(now < captureStart){
+        renderCaptureTime(captureStart-now);
+        status.textContent="Submissions open from 14 October 2026 · 7:00 PM";
+        btn.disabled = true;
+      } else if(now <= captureEnd){
+        renderCaptureTime(captureEnd-now);
+        status.textContent="Submissions are open · Capture the Bride & Groom";
+        btn.disabled = false;
+      } else {
+        timer.innerHTML='<div class="count-box" style="grid-column:1/-1"><strong>Closed</strong><span>Photo submissions have ended</span></div>';
+        status.textContent="Submissions are closed · Winners will be announced on this website";
+        btn.disabled = true;
+      }
+    }
+    function renderCaptureTime(d){
+      const day=86400000,hour=3600000,minute=60000;
+      document.getElementById("captureDays").textContent=Math.floor(d/day).toString().padStart(2,"0");
+      document.getElementById("captureHours").textContent=Math.floor(d%day/hour).toString().padStart(2,"0");
+      document.getElementById("captureMinutes").textContent=Math.floor(d%hour/minute).toString().padStart(2,"0");
+      document.getElementById("captureSeconds").textContent=Math.floor(d%minute/1000).toString().padStart(2,"0");
+    }
+    updateCapture();
+    setInterval(updateCapture,1000);
+
+    // ---- Photo upload ----
+    // Paste your Google Apps Script Web App URL here (see setup steps in apps-script.gs)
+    const UPLOAD_URL = "";
+
+    const fileInput = document.getElementById("captureFile");
+    const form = document.getElementById("captureForm");
+    const msg = document.getElementById("captureMsg");
+    const submitBtn = document.getElementById("submitButton");
+    let picked = [];
+
+    btn.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => {
+      picked = [...fileInput.files].slice(0,4);
+      const box = document.getElementById("captureThumbs");
+      box.innerHTML = "";
+      picked.forEach(f => {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(f);
+        img.alt = "Selected photo";
+        box.appendChild(img);
+      });
+      form.classList.toggle("show", picked.length > 0);
+      msg.textContent = picked.length ? picked.length + " of 4 photos selected" : "";
+    });
+
+    // Shrink photos on the phone so uploads are fast (max 1600px, JPEG)
+    function shrink(file){
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+          const c = document.createElement("canvas");
+          c.width = Math.round(img.width * scale);
+          c.height = Math.round(img.height * scale);
+          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+          resolve(c.toDataURL("image/jpeg", 0.85).split(",")[1]);
+        };
+        img.onerror = reject;
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    submitBtn.addEventListener("click", async () => {
+      const name = document.getElementById("guestName").value.trim();
+      if(!name){ msg.textContent = "Please enter your name."; return; }
+      if(!UPLOAD_URL){ msg.textContent = "Uploads are not set up yet."; return; }
+      submitBtn.disabled = true;
+      try {
+        for(let i = 0; i < picked.length; i++){
+          msg.textContent = "Uploading " + (i+1) + " of " + picked.length + "…";
+          const data = await shrink(picked[i]);
+          const res = await fetch(UPLOAD_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ name, index: i+1, data })
+          });
+          const out = await res.json();
+          if(!out.ok) throw new Error(out.error || "failed");
+        }
+        msg.textContent = "Thank you! Your photos were submitted.";
+        picked = []; fileInput.value = "";
+        document.getElementById("captureThumbs").innerHTML = "";
+        form.classList.remove("show");
+      } catch(err) {
+        msg.textContent = "Upload failed. Check your connection and try again.";
+      }
+      submitBtn.disabled = false;
+    });
+
+    const modal = document.getElementById("modal");
+    const image = document.getElementById("inviteImage");
+    const close = document.getElementById("close");
+
+    image.addEventListener("click", () => modal.classList.add("open"));
+    close.addEventListener("click", () => modal.classList.remove("open"));
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
