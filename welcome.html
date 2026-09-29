@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ec">
+  <title>Sushmitha &amp; Niranjan | Wedding Invitation</title>
+  <meta name="description" content="Join Sushmitha K and Niranjan S for their wedding celebration.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root {
+      color-scheme: light;
+      --paper: #f4eee3;
+      --ink: #44342a;
+      --gold: #aa8753;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px 16px;
+      background: radial-gradient(ellipse at 50% 38%, #fffdf8 0%, #f8f2e8 58%, #e9dfd0 100%);
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+    .welcome {
+      width: min(100%, 560px);
+      display: grid;
+      justify-items: center;
+      gap: 15px;
+    }
+    .copy {
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+      padding: 0 0 4px;
+      text-align: center;
+    }
+    .invitation-title {
+      margin: 0;
+      color: #4b3829;
+      font: 500 18px/1.25 Cinzel, Georgia, serif;
+      text-transform: uppercase;
+    }
+    .floral-divider {
+      width: min(210px, 60vw);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font: 16px/1 "Cormorant Garamond", Georgia, serif;
+    }
+    .floral-divider::before,
+    .floral-divider::after {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      content: "";
+    }
+    .floral-divider::after { transform: scaleX(-1); }
+    .enter {
+      min-height: 48px;
+      min-width: 220px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 22px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: #fffaf0;
+      color: #765a34;
+      font: 500 11px Montserrat, sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .enter:hover, .enter:focus-visible {
+      background: #80623d;
+      color: #fffaf0;
+      box-shadow: 0 4px 14px rgba(85, 61, 35, .18);
+    }
+    .enter span { font-size: 16px; line-height: 1; }
+    .enter:focus-visible { outline: 2px solid #80623d; outline-offset: 4px; }
+    .temple-gates {
+      position: relative;
+      --scene-width: min(calc(100vw - 32px), 420px);
+      width: var(--scene-width);
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      filter: drop-shadow(0 16px 22px rgba(64, 46, 30, .2));
+      perspective: 1600px;
+      pointer-events: none;
+    }
+    .gate-leaf {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      overflow: hidden;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+    .gate-leaf img {
+      position: absolute;
+      top: 0;
+      width: var(--scene-width);
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      filter: contrast(1.1) saturate(1.03);
+    }
+    .gate-leaf--left { left: 0; transform-origin: left center; }
+    .gate-leaf--left img { left: 0; }
+    .gate-leaf--right { right: 0; transform-origin: right center; }
+    .gate-leaf--right img { right: 0; }
+    .sparkle {
+      position: absolute;
+      z-index: 2;
+      width: var(--size);
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(255, 246, 217, .9) 0 1px, rgba(242, 213, 141, .52) 2px, transparent 60%);
+      color: #fff0bb;
+      filter: drop-shadow(0 0 8px rgba(255, 226, 155, .95));
+      animation: sparkle-twinkle 2.4s ease-in-out var(--delay) infinite;
+      pointer-events: none;
+    }
+    .sparkle::before,
+    .sparkle::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: currentColor;
+      border-radius: 1px;
+      content: "";
+      transform: translate(-50%, -50%);
+    }
+    .sparkle::before { width: 2px; height: 100%; }
+    .sparkle::after { width: 100%; height: 2px; }
+    .sparkle-one { top: 13%; left: 13%; --size: 22px; --delay: -.2s; }
+    .sparkle-two { top: 23%; right: 12%; --size: 15px; --delay: -1.4s; }
+    .sparkle-three { top: 41%; left: 7%; --size: 23px; --delay: -2.3s; }
+    .sparkle-four { top: 54%; right: 8%; --size: 18px; --delay: -.8s; }
+    .sparkle-five { top: 68%; left: 18%; --size: 15px; --delay: -1.9s; }
+    .sparkle-six { top: 72%; right: 18%; --size: 21px; --delay: -.4s; }
+    @keyframes sparkle-twinkle {
+      0%, 100% { opacity: .2; transform: scale(.55) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+    }
+    .temple-gates.is-opening .gate-leaf--left { animation: gate-open-left .4s cubic-bezier(.65, 0, .35, 1) both; }
+    .temple-gates.is-opening .gate-leaf--right { animation: gate-open-right .4s cubic-bezier(.65, 0, .35, 1) both; }
+    @keyframes gate-open-left { to { transform: rotateY(-110deg); } }
+    @keyframes gate-open-right { to { transform: rotateY(110deg); } }
+
+    @media (max-height: 700px) {
+      .temple-gates { height: 52svh; }
+    }
+    @media (max-width: 700px) {
+      body { padding: 0; }
+      .welcome {
+        position: relative;
+        width: 100%;
+        height: 100svh;
+        min-height: 0;
+        display: block;
+        overflow: hidden;
+      }
+      .temple-gates {
+        position: absolute;
+        inset: 0;
+        --scene-width: 100vw;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        aspect-ratio: auto;
+        filter: none;
+      }
+      .copy {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: clamp(48px, 7svh, 64px);
+        left: 0;
+        gap: 10px;
+        padding: 0 18px max(24px, env(safe-area-inset-bottom));
+        background: transparent;
+      }
+      .invitation-title { font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .gate-leaf { animation-duration: .01ms !important; }
+      .sparkle { animation: none; opacity: .45; }
+    }
+  </style>
+</head>
+<body>
+  <main class="welcome">
+    <div class="temple-gates" aria-hidden="true">
+      <div class="gate-leaf gate-leaf--left"><img src="door.png" alt=""></div>
+      <div class="gate-leaf gate-leaf--right"><img src="door.png" alt=""></div>
+      <span class="sparkle sparkle-one"></span>
+      <span class="sparkle sparkle-two"></span>
+      <span class="sparkle sparkle-three"></span>
+      <span class="sparkle sparkle-four"></span>
+      <span class="sparkle sparkle-five"></span>
+      <span class="sparkle sparkle-six"></span>
+    </div>
+    <div class="copy">
+      <a class="enter" href="index.html?entered=1">Open Invitation <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </main>
+  <script>
+    const openLink = document.querySelector(".enter");
+    const templeGates = document.querySelector(".temple-gates");
+    const rightGate = document.querySelector(".gate-leaf--right");
+
+    openLink.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (templeGates.classList.contains("is-opening")) return;
+
+      let hasNavigated = false;
+      const navigate = () => {
+        if (hasNavigated) return;
+        hasNavigated = true;
+        window.location.assign(openLink.href);
+      };
+      const fallback = window.setTimeout(navigate, 450);
+      rightGate.addEventListener("animationend", (animationEvent) => {
+        if (animationEvent.animationName !== "gate-open-right") return;
+        window.clearTimeout(fallback);
+        navigate();
+      }, { once: true });
+      templeGates.classList.add("is-opening");
+    });
+  </script>
+</body>
+</html>
