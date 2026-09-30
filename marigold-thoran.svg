@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="80" viewBox="0 0 96 80">
+  <path d="M0 1.5H96" fill="none" stroke="#c5a156" stroke-width="2"/>
+  <path d="M0 4.5H96" fill="none" stroke="#292620" stroke-width="1"/>
+  <path d="M0 12C16 12 24 56 48 56S80 12 96 12" fill="none" stroke="#b77b2e" stroke-width="1.5"/>
+  <g id="orange-flower">
+    <circle r="5.5" fill="#e97926"/>
+    <circle r="2.2" fill="#b94717"/>
+  </g>
+  <g id="gold-flower">
+    <circle r="5.5" fill="#efb833"/>
+    <circle r="2.2" fill="#ce681c"/>
+  </g>
+  <path d="M0 12C-6 8-5 4 0 7C5 4 6 8 0 12Z" fill="#54734b" stroke="#3d5939" stroke-width=".8"/>
+  <path d="M0 8V11" fill="none" stroke="#c5c98e" stroke-width=".7"/>
+  <use href="#orange-flower" x="0" y="13"/>
+  <use href="#gold-flower" x="8" y="20"/>
+  <use href="#orange-flower" x="16" y="32"/>
+  <use href="#gold-flower" x="24" y="44"/>
+  <use href="#orange-flower" x="32" y="51"/>
+  <use href="#gold-flower" x="40" y="55"/>
+  <use href="#orange-flower" x="48" y="56"/>
+  <use href="#gold-flower" x="56" y="55"/>
+  <use href="#orange-flower" x="64" y="51"/>
+  <use href="#gold-flower" x="72" y="44"/>
+  <use href="#orange-flower" x="80" y="32"/>
+  <use href="#gold-flower" x="88" y="20"/>
+  <use href="#orange-flower" x="96" y="13"/>
+</svg>
