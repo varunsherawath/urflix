@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4ec">
+  <title>Sushmitha &amp; Niranjan | Wedding Invitation</title>
+  <meta name="description" content="Join Sushmitha K and Niranjan S for their wedding celebration.">
+  <link rel="preload" as="image" href="Elegant%20Gold%20Monogram%20Wedding%20Invitation.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
+
+    :root {
+      color-scheme: light;
+      --paper: #f4eee3;
+      --ink: #44342a;
+      --gold: #aa8753;
+
+      --art: url("Elegant Gold Monogram Wedding Invitation.png");
+      --art-clean: url("Elegant Gold Monogram Wedding Invitation.png");
+
+      /* Scene width: the artwork is 941 x 1672 and always fits the screen without cropping the envelope. */
+      --sw: min(100vw, calc(100vh * 941 / 1672));
+
+      /* ---- Artwork geometry (pixels in the 941 x 1672 source image) -------------------
+         Only tune these if the hinge, V-edges or seal look slightly off. */
+      --iw: 941;  --ih: 1672;            /* image size                                   */
+      --ex: 35;   --ey: 570;             /* envelope rectangle: left / top               */
+      --ew: 872;  --eh: 557;             /*                      width / height          */
+      --fy: 652;                         /* horizontal crease where the V-flap begins    */
+      --tip: 988;                        /* bottom point of the V-flap                   */
+      --sx: 473;  --sy: 962;  --sd: 140; /* wax seal: centre x / centre y / diameter     */
+
+      /* Derived values (percentages inside the envelope box) */
+      --fh: calc(var(--tip) - var(--fy));
+      --fy-pct: calc((var(--fy) - var(--ey)) / var(--eh) * 100%);
+      --tip-pct: calc((var(--tip) - var(--ey)) / var(--eh) * 100%);
+      --flap-h-pct: calc(var(--fh) / var(--eh) * 100%);
+
+      /* Physical feel */
+      --flap-time: 2.2s;
+      --card-delay: 2.2s;
+      --card-time: .65s;
+      --card-top: 29.6%;                 /* card top inside the envelope, closed          */
+      --card-h: 70%;
+      --card-lift: 12;                   /* how far the card rises, % of envelope height  */
+    }
+    @supports (height: 100svh) {
+      :root { --sw: min(100vw, calc(100svh * 941 / 1672)); }
+    }
+
+    * { box-sizing: border-box; }
+    html { background: #ead3b8; }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #ead3b8;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Soft blurred copy of the scene fills any space around the artwork on tall/wide screens */
+    .backdrop {
+      position: fixed;
+      inset: -8%;
+      background: var(--art) center / cover no-repeat;
+      filter: blur(26px) saturate(1.05);
+      z-index: 0;
+    }
+
+    .welcome {
+      position: relative;
+      z-index: 1;
+      width: var(--sw);
+      transition: opacity .4s ease;
+    }
+    .stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 941 / 1672;
+    }
+    .scene {
+      position: absolute;
+      inset: 0;
+      background: var(--art) center / 100% 100% no-repeat;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
+              mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 94%, transparent 100%);
+    }
+
+    /* ---------- Envelope box: sits exactly over the envelope in the artwork ---------- */
+    .env-box {
+      position: absolute;
+      left: calc(var(--ex) / var(--iw) * 100%);
+      top: calc(var(--ey) / var(--ih) * 100%);
+      width: calc(var(--ew) / var(--iw) * 100%);
+      height: calc(var(--eh) / var(--ih) * 100%);
+      pointer-events: none;
+    }
+    .envelope {
+      position: absolute;
+      inset: 0;
+      perspective: calc(var(--sw) * 2.8);
+      perspective-origin: 50% 50%;
+    }
+
+    /* Everything that lives inside the envelope (clipped to the envelope rectangle) */
+    .body {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+    }
+
+    /* Inside of the envelope, revealed in the V-shaped opening */
+    .interior {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(
+        0 var(--fy-pct), 100% var(--fy-pct),
+        100% calc(var(--fy-pct) + 1.4%),
+        50% calc(var(--tip-pct) + 1.6%),
+        0 calc(var(--fy-pct) + 1.4%));
+      background:
+        linear-gradient(180deg, rgba(92, 64, 34, .34) 0, rgba(92, 64, 34, .12) 9%, rgba(92, 64, 34, 0) 22%),
+        radial-gradient(ellipse at 50% 55%, rgba(255, 250, 238, .55), rgba(255, 250, 238, 0) 70%),
+        linear-gradient(180deg, #e6d5b4 0%, #dfcba5 60%, #d6c19a 100%);
+    }
+
+    /* The invitation card waiting inside */
+    .card {
+      position: absolute;
+      left: 5.2%;
+      right: 5.2%;
+      top: var(--card-top);
+      height: var(--card-h);
+      border-radius: 3px 3px 0 0;
+      background:
+        linear-gradient(180deg, #fbf1db 0%, #f8edd3 55%, #f3e6c8 100%);
+      box-shadow:
+        0 0 0 1px rgba(170, 135, 83, .38),
+        0 -1px 0 rgba(255, 255, 255, .9) inset,
+        0 -3px 8px rgba(70, 48, 24, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8% 8% 10%;
+      overflow: visible;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 3.4% 3.4% 0;
+      border: 1px solid rgba(170, 135, 83, .42);
+      border-bottom: 0;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(86, 58, 30, .34), rgba(86, 58, 30, 0) 38%);
+      pointer-events: none;
+    }
+    .card-text {
+      position: absolute;
+      z-index: 8;
+      left: 5%;
+      right: 5%;
+      top: 54%;
+      display: block;
+      text-align: center;
+      color: #4a3b2d;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font: 600 clamp(12px, 2.4vw, 18px)/1.2 "Montserrat", sans-serif;
+      width: 90%;
+      max-width: 90%;
+      white-space: normal;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: top var(--card-time) cubic-bezier(.3, .08, .2, 1), opacity .3s ease, transform .3s ease;
+    }
+    .env-box.is-opening .card-text {
+      top: 42%;
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--card-delay), calc(var(--flap-time) + .08s), calc(var(--flap-time) + .08s);
+    }
+
+    /* Shadow the lifting flap throws into the envelope */
+    .flap-cast {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      clip-path: polygon(0 var(--fy-pct), 100% var(--fy-pct), 50% var(--tip-pct));
+      background: linear-gradient(180deg, rgba(48, 30, 12, .62) 0%, rgba(48, 30, 12, .22) 55%, rgba(48, 30, 12, 0) 100%);
+    }
+
+    /* Soft shadow where the front pockets sit above the card */
+    .pocket-shadow {
+      position: absolute;
+      inset: 0;
+      filter: blur(4px);
+      opacity: .5;
+    }
+    .pocket-shadow i {
+      position: absolute;
+      inset: 0;
+      background: #3e2812;
+      clip-path: polygon(0 calc(var(--fy-pct) - .4%), 50% calc(var(--tip-pct) - .4%), 100% calc(var(--fy-pct) - .4%), 100% 100%, 0 100%);
+    }
+
+    /* The original front of the envelope below the V-edges (side and bottom pockets), unchanged */
+    .pocket {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 calc(var(--fy-pct) - .6%), 50% calc(var(--tip-pct) - .6%), 100% calc(var(--fy-pct) - .6%), 100% 100%, 0 100%);
+      background-image: var(--art-clean);
+      background-repeat: no-repeat;
+      background-size: calc(var(--iw) / var(--ew) * 100%) calc(var(--ih) / var(--eh) * 100%);
+      background-position: calc(var(--ex) / (var(--iw) - var(--ew)) * 100%) calc(var(--ey) / (var(--ih) - var(--eh)) * 100%);
+    }
+
+    /* ---------- The V-shaped top flap, hinged on the horizontal crease ---------- */
+    .flap {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: var(--fy-pct);
+      height: var(--flap-h-pct);
+      transform-origin: 50% 0;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .flap__layer {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+    .flap__front {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background-image: var(--art);
+      background-repeat: no-repeat;
+      background-size: calc(var(--iw) / var(--ew) * 100%) calc(var(--ih) / var(--fh) * 100%);
+      background-position: calc(var(--ex) / (var(--iw) - var(--ew)) * 100%) calc(var(--fy) / (var(--ih) - var(--fh)) * 100%);
+    }
+    .flap__front i {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(180deg, rgba(60, 40, 20, 0) 0%, rgba(60, 40, 20, .42) 100%);
+    }
+    /* Paper thickness: thin tan layers stacked between the two faces */
+    .flap__edge {
+      background: #cbb084;
+    }
+    .flap__edge:nth-of-type(1) { transform: translateZ(-.4px); }
+    .flap__edge:nth-of-type(2) { transform: translateZ(-.8px); background: #c2a577; }
+    .flap__edge:nth-of-type(3) { transform: translateZ(-1.2px); }
+    /* Inside (liner) of the flap, seen once it passes vertical */
+    .flap__back {
+      transform: rotateY(180deg) translateZ(1.6px);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flap__back svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .flap__back .tone,
+    .flap__back .sheen {
+      position: absolute;
+      inset: 0;
+    }
+    .flap__back .tone {
+      background: linear-gradient(180deg, rgba(120, 82, 40, .5) 0%, rgba(120, 82, 40, .06) 85%);
+      opacity: 1;
+    }
+    .flap__back .sheen {
+      opacity: 0;
+      background: linear-gradient(112deg, rgba(255, 255, 255, 0) 28%, rgba(255, 244, 214, .5) 48%, rgba(255, 255, 255, 0) 68%);
+    }
+
+    /* Wax seal rides on the flap (a little proud of the paper) */
+    .seal {
+      position: absolute;
+      left: calc(50.2% - (var(--sd) / var(--ew) * 100%) / 2);
+      top: calc((var(--sy) - var(--fy)) / var(--fh) * 100% - (var(--sd) / var(--fh) * 100%) / 2);
+      width: calc(var(--sd) / var(--ew) * 100%);
+      height: calc(var(--sd) / var(--fh) * 100%);
+      transform: translateZ(1.6px);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background-image: var(--art);
+      background-repeat: no-repeat;
+      background-size: calc(var(--iw) / var(--sd) * 100%) calc(var(--ih) / var(--sd) * 100%);
+      background-position: calc((var(--sx) - var(--sd) / 2) / (var(--iw) - var(--sd)) * 100%) calc((var(--sy) - var(--sd) / 2) / (var(--ih) - var(--sd)) * 100%);
+      -webkit-mask-image: radial-gradient(closest-side, #000 0, #000 86%, transparent 100%);
+              mask-image: radial-gradient(closest-side, #000 0, #000 86%, transparent 100%);
+    }
+
+    /* ---------- Opening sequence ---------- */
+    .env-box.is-opening .flap       { animation: flap-open var(--flap-time) linear forwards; }
+    .env-box.is-opening .flap__front i { animation: front-shade var(--flap-time) linear forwards; }
+    .env-box.is-opening .flap__back .tone  { animation: back-tone var(--flap-time) linear forwards; }
+    .env-box.is-opening .flap__back .sheen { animation: back-sheen var(--flap-time) linear forwards; }
+    .env-box.is-opening .flap-cast  { animation: cast-shadow var(--flap-time) linear forwards; }
+    .env-box.is-opening .card       { animation: card-slide var(--card-time) cubic-bezier(.3, .08, .2, 1) var(--card-delay) forwards; }
+    .env-box.is-opening .card::after { animation: card-cast var(--card-time) ease-out var(--card-delay) forwards; }
+    .env-box.is-opening .sparkle    { animation: sparkle-out .5s ease forwards; }
+
+    @keyframes flap-open {
+      0%   { transform: rotateX(0deg);   animation-timing-function: cubic-bezier(.55, .05, .45, 1); }
+      60%  { transform: rotateX(94deg);  animation-timing-function: cubic-bezier(.25, .1, .35, 1); }
+      84%  { transform: rotateX(120deg); animation-timing-function: cubic-bezier(.4, 0, .3, 1); }
+      100% { transform: rotateX(117deg); }
+    }
+    @keyframes front-shade { 0% { opacity: 0; } 58% { opacity: 1; } 100% { opacity: 1; } }
+    @keyframes back-tone   { 0%, 58% { opacity: 1; } 84%, 100% { opacity: .12; } }
+    @keyframes back-sheen  { 0%, 58% { opacity: 0; } 80% { opacity: .9; } 100% { opacity: .5; } }
+    @keyframes cast-shadow { 0% { opacity: 0; } 24% { opacity: .5; } 52% { opacity: .6; } 68% { opacity: .22; } 84%, 100% { opacity: 0; } }
+    @keyframes card-slide  { from { transform: translateY(0); } to { transform: translateY(calc(var(--card-lift) / 70 * -100%)); } }
+    @keyframes card-cast   { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes sparkle-out { to { opacity: 0; } }
+
+    /* ---------- Button ---------- */
+    .copy {
+      position: absolute;
+      inset: 0;
+      z-index: 24;
+    }
+    .lotus-trigger {
+      position: absolute;
+      left: 50%;
+      top: 58.5%;
+      width: 104px;
+      height: 104px;
+      margin: 0;
+      padding: 0;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background: rgba(255,255,255,.01);
+      cursor: pointer;
+      opacity: .02;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      appearance: none;
+      -webkit-appearance: none;
+      touch-action: manipulation;
+    }
+    .lotus-trigger:hover,
+    .lotus-trigger:focus-visible {
+      opacity: 1;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(128, 98, 61, .8);
+      outline: 2px solid rgba(128, 98, 61, .8);
+      outline-offset: 4px;
+    }
+    .lotus-trigger[aria-disabled="true"] { pointer-events: none; opacity: .02; }
+    .click-hint {
+      position: absolute;
+      left: 50%;
+      top: 71%;
+      transform: translateX(-50%);
+      font: 700 8.5px/1.4 Montserrat, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(91, 67, 40, .9);
+      text-align: center;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,.3);
+      pointer-events: none;
+    }
+    .enter {
+      display: none;
+    }
+
+    /* ---------- Sparkles (unchanged from the existing design) ---------- */
+    .sparkle {
+      position: absolute;
+      z-index: 6;
+      width: var(--size);
+      aspect-ratio: 1;
+      background: radial-gradient(circle, rgba(255, 246, 217, .9) 0 1px, rgba(242, 213, 141, .52) 2px, transparent 60%);
+      color: #fff0bb;
+      filter: drop-shadow(0 0 8px rgba(255, 226, 155, .95));
+      animation: sparkle-twinkle 2.4s ease-in-out var(--delay) infinite;
+      pointer-events: none;
+    }
+    .sparkle::before,
+    .sparkle::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: currentColor;
+      border-radius: 1px;
+      content: "";
+      transform: translate(-50%, -50%);
+    }
+    .sparkle::before { width: 2px; height: 100%; }
+    .sparkle::after { width: 100%; height: 2px; }
+    .sparkle-one { top: 13%; left: 13%; --size: 18px; --delay: -.2s; }
+    .sparkle-two { top: 23%; right: 12%; --size: 13px; --delay: -1.4s; }
+    .sparkle-three { top: 41%; left: 7%; --size: 19px; --delay: -2.3s; }
+    .sparkle-four { top: 54%; right: 8%; --size: 15px; --delay: -.8s; }
+    .sparkle-five { top: 68%; left: 18%; --size: 13px; --delay: -1.9s; }
+    .sparkle-six { top: 72%; right: 18%; --size: 17px; --delay: -.4s; }
+    @keyframes sparkle-twinkle {
+      0%, 100% { opacity: .2; transform: scale(.55) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+    }
+
+    body.is-leaving .welcome { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .sparkle { animation: none; opacity: .45; }
+    }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <main class="welcome">
+    <div class="stage">
+      <div class="scene" aria-hidden="true"></div>
+
+      <div class="env-box" id="envBox" aria-hidden="true">
+        <div class="envelope">
+          <div class="body">
+            <div class="interior"></div>
+            <div class="card">
+            </div>
+            <div class="flap-cast"></div>
+            <div class="pocket-shadow"><i></i></div>
+            <div class="pocket"></div>
+          </div>
+
+          <div class="flap">
+            <div class="flap__layer flap__edge"></div>
+            <div class="flap__layer flap__edge"></div>
+            <div class="flap__layer flap__edge"></div>
+            <div class="flap__layer flap__back">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="liner" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#e9d6ad"/>
+                    <stop offset=".45" stop-color="#f5e8cb"/>
+                    <stop offset="1" stop-color="#fbf1dc"/>
+                  </linearGradient>
+                </defs>
+                <polygon points="0,0 100,0 50,100" fill="url(#liner)"/>
+                <polygon points="6,3 94,3 50,90" fill="none" stroke="#aa8753" stroke-opacity=".32" stroke-width="1" vector-effect="non-scaling-stroke"/>
+                <polygon points="0,0 100,0 50,100" fill="none" stroke="#fffaf0" stroke-opacity=".85" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <div class="tone"></div>
+              <div class="sheen"></div>
+            </div>
+            <div class="flap__layer flap__front"><i></i></div>
+            <div class="seal"></div>
+          </div>
+        </div>
+
+        <div class="card-text">A New Chapter</div>
+
+        <span class="sparkle sparkle-one"></span>
+        <span class="sparkle sparkle-two"></span>
+        <span class="sparkle sparkle-three"></span>
+        <span class="sparkle sparkle-four"></span>
+        <span class="sparkle sparkle-five"></span>
+        <span class="sparkle sparkle-six"></span>
+      </div>
+
+      <div class="copy">
+        <button type="button" class="lotus-trigger" aria-label="Open invitation" title="Open invitation"></button>
+        <div class="click-hint">CLICK BUTTON TO OPEN INVITATION</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var link = document.querySelector(".enter");
+      var lotus = document.querySelector(".lotus-trigger");
+      var box = document.getElementById("envBox");
+      var card = box.querySelector(".card");
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var HOLD_MS = 500;
+      var FADE_MS = 250;
+      var targetHref = "index.html?entered=1";
+      var busy = false;
+
+      function leave() {
+        document.body.classList.add("is-leaving");
+        window.setTimeout(function () { window.location.assign(link ? link.href : targetHref); }, FADE_MS);
+      }
+
+      function beginOpen() {
+        if (busy) return;
+        busy = true;
+
+        if (reduceMotion) { leave(); return; }
+
+        if (link) link.setAttribute("aria-disabled", "true");
+        if (lotus) lotus.setAttribute("aria-disabled", "true");
+
+        var finished = false;
+        var fallback;
+        var redirectTimer = window.setTimeout(function () {
+          window.location.href = link ? link.href : targetHref;
+        }, 5000);
+
+        function finish() {
+          if (finished) return;
+          finished = true;
+          window.clearTimeout(fallback);
+          window.clearTimeout(redirectTimer);
+          window.setTimeout(leave, HOLD_MS);
+        }
+
+        card.addEventListener("animationend", function (e) {
+          if (e.animationName === "card-slide") finish();
+        });
+        fallback = window.setTimeout(finish, 5400);
+
+        box.classList.add("is-opening");
+      }
+
+      window.addEventListener("pageshow", function () {
+        busy = false;
+        box.classList.remove("is-opening");
+        document.body.classList.remove("is-leaving");
+        if (link) link.removeAttribute("aria-disabled");
+        if (lotus) lotus.removeAttribute("aria-disabled");
+      });
+
+      if (link) {
+        link.addEventListener("click", function (event) {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          beginOpen();
+        });
+      }
+
+      if (lotus) {
+        lotus.addEventListener("click", function () {
+          beginOpen();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
